@@ -19,10 +19,12 @@ function startgame(){
               document.getElementById("status").innerHTML = "You Lost :(";
               document.getElementById("status").style.color = "red";
         });
-    ///////////
-       
-    //////////
-    
+    ///////////////////
+    end.addEventListener("mouseover",function(){
+        document.getElementById("status").innerHTML = "You Win :)";
+        document.getElementById("status").style.color = "green";
+    });
+    //////////////////
     }
     
     for (var i = 0; i < boundaries.length; i++) {
