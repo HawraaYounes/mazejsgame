@@ -11,6 +11,9 @@ var count=0;
 //     element.addEventListener("mouseover", isOver=true);
 // }
 function startgame(){
+    for (var i = 0; i < boundaries.length; i++) {
+        boundaries[i].style.border = " solid black 1px";
+      }
     for (i in boundaries){
         boundaries[i].addEventListener("mouseover", function(){
             for (var i = 0; i < boundaries.length; i++) {
@@ -19,12 +22,11 @@ function startgame(){
               document.getElementById("status").innerHTML = "You Lost :(";
               document.getElementById("status").style.color = "red";
         });
-    ///////////////////
     end.addEventListener("mouseover",function(){
         document.getElementById("status").innerHTML = "You Win :)";
         document.getElementById("status").style.color = "green";
+        
     });
-    //////////////////
     }
     
     for (var i = 0; i < boundaries.length; i++) {
