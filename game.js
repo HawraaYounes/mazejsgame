@@ -1,3 +1,4 @@
+window.onload=function(){
 var status=document.getElementById("status");
 var game=document.getElementById("game");
 var start=document.getElementById("start");
@@ -5,12 +6,12 @@ var end=document.getElementById("end");
 var boundary1=document.getElementById("boundary1");
 var boundaries=document.getElementsByClassName("boundary");
 var isOver=false;
-var count=0;
+var score=0;
+var win=false;
 
-// function isMouseOver(element){
-//     element.addEventListener("mouseover", isOver=true);
-// }
 function startgame(){
+    status.style.color = "black";
+    status.innerHTML = "Keep playing! Be sure to avoid the walls";
     for (var i = 0; i < boundaries.length; i++) {
         boundaries[i].style.border = " solid black 1px";
       }
@@ -19,13 +20,15 @@ function startgame(){
             for (var i = 0; i < boundaries.length; i++) {
                 boundaries[i].style.border = " solid red 1px";
               }
-              document.getElementById("status").innerHTML = "You Lost :(";
-              document.getElementById("status").style.color = "red";
+              status.innerHTML = "You Lost :(";
+              status.style.color = "red";
+              win=false;
         });
     end.addEventListener("mouseover",function(){
-        document.getElementById("status").innerHTML = "You Win :)";
-        document.getElementById("status").style.color = "green";
-        
+        status.innerHTML = "You Win :)";
+        status.style.color = "green";
+        win=true;
+        document.querySelector(".example").innerHTML=score;
     });
     }
     
@@ -34,13 +37,25 @@ function startgame(){
       }
 }
 
-window.onload = function(){
-   execute();
-};
-
 function execute(){
     start.onmouseover=function(){
         game.addEventListener("mouseenter",startgame);
+        if(win==true){
+            score=score+5;
+        }
+        else if(win==false){
+            score=score-10;
+        }
+        document.querySelector(".example").innerHTML=score;
     }
 }
+
+execute();
+document.querySelector(".example").innerHTML=score;
+//start.addEventListener("click",reset)
+}
+
+
+
+
 
