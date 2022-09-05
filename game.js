@@ -6,7 +6,7 @@ var end=document.getElementById("end");
 var boundary1=document.getElementById("boundary1");
 var boundaries=document.getElementsByClassName("boundary");
 var score=0;
-var win=false;
+var win;
 
 function startGame(){
     status.style.color = "black";
@@ -15,6 +15,7 @@ function startGame(){
         boundaries[i].style.border = " solid black 1px";
       }
     for (i in boundaries){
+        for (var i = 0; i < boundaries.length; i++) {
         boundaries[i].addEventListener("mouseover", function(){
             for (var i = 0; i < boundaries.length; i++) {
                 boundaries[i].style.border = " solid red 1px";
@@ -22,7 +23,9 @@ function startGame(){
               status.innerHTML = "You Lost :(";
               status.style.color = "red";
               win=false;
+        
         });
+    }
     end.addEventListener("mouseover",function(){
         status.innerHTML = "You Win :)";
         status.style.color = "green";
@@ -39,10 +42,11 @@ function startGame(){
 }
 
 function calculateScore(win){
-    if(win===true){
+    if(win==true){
         score=score+5;
+        console.log(score);
     }
-    else if(win===false){
+    else{
         score=score-10;
     }
     document.querySelector(".example").innerHTML=score;
