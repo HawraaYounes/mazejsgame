@@ -4,6 +4,7 @@ var game=document.getElementById("game");
 var start=document.getElementById("start");
 var end=document.getElementById("end");
 var boundary1=document.getElementById("boundary1");
+var boundaries=document.getElementsByClassName("boundary");
 var score=0;
 var win=false;
 
@@ -47,19 +48,18 @@ function execute(){
         document.querySelector(".example").innerHTML=score;
     }
 }
+
  function reset(){
     score=0;
     for (var i = 0; i < boundaries.length; i++) {
         boundaries[i].style.border = " solid black 1px";
-      }
-    status.innerHTML="Begin by moving your mouse over the S .";
-    
-    
+      } 
  }
+
 execute();
 start.addEventListener("click",reset);
 document.querySelector(".example").innerHTML=score;
-//start.addEventListener("click",reset)
+start.addEventListener("click",reset)
 }
 
 
