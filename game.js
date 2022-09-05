@@ -35,10 +35,9 @@ function startGame(){
     }
     
     for (var i = 0; i < boundaries.length; i++) {
-        boundaries[i].style.border = " solid red 1px";
+        boundaries[i].style.border = " solid black 1px";
       }
     
-   calculateScore(win);
 }
 
 function calculateScore(win){
@@ -56,6 +55,7 @@ function execute(){
     start.onmouseover=function(){
         game.addEventListener("mouseenter",startGame);
     }
+    calculateScore();
 }
 
  function reset(){
