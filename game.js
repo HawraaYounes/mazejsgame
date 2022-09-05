@@ -4,8 +4,6 @@ var game=document.getElementById("game");
 var start=document.getElementById("start");
 var end=document.getElementById("end");
 var boundary1=document.getElementById("boundary1");
-var boundaries=document.getElementsByClassName("boundary");
-var isOver=false;
 var score=0;
 var win=false;
 
@@ -40,17 +38,26 @@ function startgame(){
 function execute(){
     start.onmouseover=function(){
         game.addEventListener("mouseenter",startgame);
-        if(win==true){
+        if(status=="You Win :)"){
             score=score+5;
         }
-        else if(win==false){
+        else if(status=="You Lost :("){
             score=score-10;
         }
         document.querySelector(".example").innerHTML=score;
     }
 }
-
+ function reset(){
+    score=0;
+    for (var i = 0; i < boundaries.length; i++) {
+        boundaries[i].style.border = " solid black 1px";
+      }
+    status.innerHTML="Begin by moving your mouse over the S .";
+    
+    
+ }
 execute();
+start.addEventListener("click",reset);
 document.querySelector(".example").innerHTML=score;
 //start.addEventListener("click",reset)
 }
