@@ -8,7 +8,7 @@ var boundaries=document.getElementsByClassName("boundary");
 var score=0;
 var win=false;
 
-function startgame(){
+function startGame(){
     status.style.color = "black";
     status.innerHTML = "Keep playing! Be sure to avoid the walls";
     for (var i = 0; i < boundaries.length; i++) {
@@ -34,18 +34,23 @@ function startgame(){
     for (var i = 0; i < boundaries.length; i++) {
         boundaries[i].style.border = " solid red 1px";
       }
+    
+   calculateScore(win);
+}
+
+function calculateScore(win){
+    if(win===true){
+        score=score+5;
+    }
+    else if(win===false){
+        score=score-10;
+    }
+    document.querySelector(".example").innerHTML=score;
 }
 
 function execute(){
     start.onmouseover=function(){
-        game.addEventListener("mouseenter",startgame);
-        if(status=="You Win :)"){
-            score=score+5;
-        }
-        else if(status=="You Lost :("){
-            score=score-10;
-        }
-        document.querySelector(".example").innerHTML=score;
+        game.addEventListener("mouseenter",startGame);
     }
 }
 
@@ -57,8 +62,6 @@ function execute(){
  }
 
 execute();
-start.addEventListener("click",reset);
-document.querySelector(".example").innerHTML=score;
 start.addEventListener("click",reset)
 }
 
